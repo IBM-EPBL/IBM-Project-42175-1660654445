@@ -1,1 +1,29 @@
+NAME :
+SIVAPRASAD AV
 
+ROLLNO	:
+830119104043
+
+EMAIL	:
+sivarprasad15@gmail.com
+
+MOBILE NUMBER	:
+
+
+GENDER	:
+M
+
+DATE OF BIRTH	:
+
+
+DEGREE :
+Bachelor of Engineering
+
+BRANCH	:
+Computer Science Engineering
+
+YEAR OF PASSING	:
+2023
+
+COLLEGE	:
+GOVERNMENT COLLEGE OF ENGINEERING SRIRANGAM 
