@@ -1,0 +1,29 @@
+NAME :
+RAJKUMAR A
+
+ROLLNO	:
+830119104033
+
+EMAIL	:
+rajkumaralagapan2@gmail.com
+
+MOBILE NUMBER	:
+6380126799
+
+GENDER	:
+M
+
+DATE OF BIRTH	:
+09-07-2001
+
+DEGREE :
+Bachelor of Engineering
+
+BRANCH	:
+Computer Science Engineering
+
+YEAR OF PASSING	:
+2023
+
+COLLEGE	:
+GOVERNMENT COLLEGE OF ENGINEERING SRIRANGAM 
