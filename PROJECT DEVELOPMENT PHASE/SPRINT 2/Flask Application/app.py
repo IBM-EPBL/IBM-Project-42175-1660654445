@@ -1,39 +1,46 @@
-#importing required libraries
-
-from flask import Flask, request, render_template
 import numpy as np
-import pandas as pd
-from sklearn import metrics 
-import warnings
+from flask import Flask, render_template, request, redirect, jsonify
+from markupsafe import escape
 import pickle
-warnings.filterwarnings('ignore')
-from feature import FeatureExtraction
-
-file = open("model.pkl","rb")
-gbc = pickle.load(file)
-file.close()
-
+import inputScript   #inputScript file - to analyze the URL
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
+model = pickle.load(open("/home/ana/ana/web-phishing-detection/phishing_website.pkl","rb"))
 
-        url = request.form["url"]
-        obj = FeatureExtraction(url)
-        x = np.array(obj.getFeaturesList()).reshape(1,30) 
+# user-inputs the URL in this page
+@app.route('/')
+def predict():
+    return render_template("index.html")
 
-        y_pred =gbc.predict(x)[0]
-        #1 is safe       
-        #-1 is unsafe
-        y_pro_phishing = gbc.predict_proba(x)[0,0]
-        y_pro_non_phishing = gbc.predict_proba(x)[0,1]
-        # if(y_pred ==1 ):
-        pred = "It is {0:.2f} % safe to go ".format(y_pro_phishing*100)
-        return render_template('index.html',xx =round(y_pro_non_phishing,2),url=url )
-    return render_template("index.html", xx =-1)
+#  fetches given URL and passes to inputScript
+@app.route('/predict',methods=["POST"])
+def y_predict():
+    url = request.form['url']
+    check_predic = inputScript.main(url)
+    predic = model.predict(check_predic)
 
+    # print(check_predic)
+    # print (predic)
+    # result = predic[0]
+    
+    if(predic==-1):
+        pred = "You are safe!! This is a Legimate Website :)"
+    elif(predic==1):
+        pred = "You are in a phishing site. Dont Trust :("
+    else:
+        pred = "You are in a suspecious site. Be Cautious ;("
+
+    return render_template("index.html", pred_text = '{}'.format(pred), url = url)
+
+#  takes ip parameters from URL by inputScript and returns the predictions
+@app.route('/predict_api', methods = ['POST'])
+def predict_api():
+
+    data = request.get_json(force = True)
+    predic = model.y_predict([np.array(list(data.values()))])
+    result = predic[0]
+    return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(debug=True,port=2002)
+    app.run(host = '0.0.0.0', debug=True)
