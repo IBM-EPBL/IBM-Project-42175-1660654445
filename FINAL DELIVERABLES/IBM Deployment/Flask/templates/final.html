@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href="../static/icon.png" type = "image/x-icon">
+    <title>Fish ThE Phish</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+    <style>
+        /* @import url(https://fonts.googleapis.com/css?family=Questrial);
+        @import url(https://fonts.googleapis.com/css?family=Dancing+Script:700); */
+        @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap');        
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #282828;
+            color: #d3d3d3;
+            webkit-tap-highlight-color: #222;
+        }
+
+        hr {
+            max-width: 80px;
+            border-width: 3px;
+            opacity: 0.09;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        hr.light {
+            border-color: #fff;
+        }
+
+        a {
+            color: #F7DC5F;
+            -webkit-transition: all .35s;
+            -moz-transition: all .35s;
+            transition: all .35s;
+        }
+
+        a:hover,
+        a:focus {
+            color: #F7DC5F;
+            outline: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 100;
+        }
+
+        p {
+            font-size: large;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Saira Condensed', sans-serif;
+        }
+
+        .wide-space {
+            letter-spacing: 1.6px;
+        }
+
+        .icon-lg {
+            font-size: 50px;
+            line-height: 18px;
+        }
+
+        .bg-primary {
+            background-color:white;
+        }
+
+        .bg-dark {
+            color: #eee;
+            background-color: #222;
+        }
+
+        .cursive {
+            font-family: 'Saira Condensed', sans-serif;
+            text-transform:capitalize;
+            text-align: left;
+            margin-left: -38rem;
+        }
+
+        .text-faded {
+            color: white;
+            font-family: 'Saira Condensed', sans-serif;
+           text-align:left;
+           margin-left: -45rem;
+           margin-right: -45rem;
+            font-size: x-large;
+        }
+
+        .text-dark {
+            color: #111;
+        }
+
+        .text-primary {
+            color: #F7DC5F;
+        }
+
+        .modal-content {
+            background-color: #1d1d1d;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        aside {
+            padding: 50px 0;
+        }
+
+        footer {
+            padding: 15px;
+        }
+
+        .no-padding {
+            padding: 0;
+        }
+
+        .navbar-default {
+            border-color: rgba(35, 35, 35, .05);
+            font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #222;
+            -webkit-transition: all .4s;
+            -moz-transition: all .4s;
+            transition: all .4s;
+        }
+
+        .navbar-header>.navbar-brand {
+            font-family: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
+            color: #F7DC5F;
+            padding: 15px;
+            -webkit-transition: padding .2s ease-in;
+            -moz-transition: padding .2s ease-in;
+            transition: padding .2s ease-in;
+        }
+
+        .navbar-header>.navbar-brand:hover,
+        .navbar-header>.navbar-brand:focus {
+            color: #eee;
+        }
+
+        .navbar-default .navbar-toggle:focus,
+        .navbar-default .navbar-toggle:hover {
+            background-color: #181818;
+        }
+
+        .navbar-default .navbar-toggle,
+        .navbar-default .navbar-collapse {
+            border-color: transparent;
+            float: right;
+            font-family: 'Saira Condensed', sans-serif;;
+        }
+
+        .navbar-default .nav>li>a,
+        .navbar-default .nav>li>a:focus {
+            text-transform: capitalize;
+            font-size: 23px;
+            font-weight: 700;
+            color: #F7DC5F;
+           
+        }
+
+        .navbar-default .nav>li>a:hover,
+        .navbar-default .nav>li>a:focus:hover {
+            color: #eee;
+        }
+
+        .navbar-default .nav>li.active>a,
+        .navbar-default .nav>li.active>a:focus {
+            color: #eee !important;
+            background-color: transparent;
+        }
+
+        .navbar-default .nav>li.active>a:hover,
+        .navbar-default .nav>li.active>a:focus:hover {
+            background-color: transparent;
+        }
+
+
+        @media(min-width:768px) {
+            .navbar-default {
+                border-color: transparent;
+                background-color: transparent;
+                min-height: 60px;
+            }
+
+            .navbar-header>.navbar-brand {
+                color: rgba(255, 255, 255, 0.7);
+                padding: 19px;
+            }
+
+            .navbar-default .navbar-header .navbar-brand:hover,
+            .navbar-default .navbar-header .navbar-brand:focus {
+                color: #f4f4f4;
+            }
+
+            .navbar-default .nav>li>a,
+            .navbar-default .nav>li>a:focus {
+                /* color: rgba(255, 255, 255, 0.8); */
+                padding: 20px;
+                letter-spacing: 1.1px;
+                text-shadow: 1px 1px 1px rgba(60, 60, 60, 0.7);
+            }
+
+            .navbar-default .nav>li>a:hover,
+            .navbar-default .nav>li>a:focus:hover {
+                color: #fefefe;
+            }
+
+            .navbar-default.affix {
+                border-color: rgba(34, 34, 34, .05);
+                background-color: #222;
+            }
+
+            .navbar-default.affix .navbar-header .navbar-brand {
+                font-size: 15px;
+                color: #F7DC5F;
+                padding: 20px;
+                letter-spacing: 1px;
+            }
+
+            .navbar-default.affix .navbar-header .navbar-brand:hover,
+            .navbar-default.affix .navbar-header .navbar-brand:focus {
+                color: #F7DC5F;
+            }
+
+            .navbar-default.affix .nav>li>a,
+            .navbar-default.affix .nav>li>a:focus {
+                color: #ddd;
+                text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.7);
+            }
+
+            .navbar-default.affix .nav>li>a:hover,
+            .navbar-default.affix .nav>li>a:focus:hover {
+                color: #F7DC5F;
+            }
+        }
+
+        header {
+            position: relative;
+            min-height: auto;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            /* background-color: rgb(51,51,51); */
+            background-color: #111;
+            background-position: center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+
+        header .header-content {
+            position: relative;
+            width: 100%;
+            padding: 100px 15px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        header .header-content .inner h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        header .header-content .inner p {
+            margin-bottom: 50px;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #video-background {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            /* min-width: 100%;
+            min-height: 100%; */
+            width: 50rem;
+            height: 96rem;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            float: right;
+            right: 0;
+            object-fit: contain;
+        }
+
+        #video-background.collapsing {
+            display: none;
+        }
+
+        footer {
+            background-color: #2d2d2d;
+        }
+
+        @media(min-width:768px) {
+            .icon-lg {
+                font-size: 80px;
+            }
+
+            header {
+                min-height: 100%;
+            }
+
+            header .header-content {
+                position: absolute;
+                top: 50%;
+                padding: 0 50px;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+
+            header .header-content .inner {
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 1000px;
+            }
+
+            header .header-content .inner h1 {
+                font-size: 53px;
+            }
+
+            header .header-content .inner p {
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 80%;
+                font-size: 18px;
+            }
+
+            img {
+                width: 80%;
+                height: auto;
+            }
+
+            section {
+                min-height: 600px;
+                padding: 100px 0;
+            }
+
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 35px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #eee;
+            background-color: #36333d;
+            background-image: none;
+            border: 1px solid #36333d;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        .form-control:focus {
+            color: #222;
+            background-color: #ccc;
+            box-shadow: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .margin-top-0 {
+            margin-top: 0;
+        }
+
+        .feature {
+            margin: 50px auto 0;
+            max-width: 400px;
+        }
+
+        @media(min-width:992px) {
+            .feature {
+                margin: 20px auto 0;
+            }
+        }
+
+        .feature p {
+            margin-bottom: 0;
+        }
+
+        .call-to-action h2 {
+            margin: 0 auto 20px;
+        }
+
+        .gallery-box {
+            display: block;
+            position: relative;
+            margin: 0 auto;
+            max-width: 650px;
+            overflow: hidden;
+        }
+
+        .gallery-box .gallery-box-caption {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            background: rgba(44, 44, 44, .8);
+            -webkit-transition: all .35s;
+            -moz-transition: all .35s;
+            transition: all .35s;
+        }
+
+        .gallery-box .gallery-box-caption .gallery-box-content {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+
+        .gallery-box:hover .gallery-box-caption {
+            opacity: 1;
+        }
+
+        .gallery-box:hover img {
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .gallery-box img {
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+        }
+
+        .no-gutter>[class*=col-] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .btn-default {
+            border-color: #fff;
+            color: #222;
+            background-color: #fff;
+            -webkit-transition: all .35s;
+            -moz-transition: all .35s;
+            transition: all .35s;
+        }
+
+        .btn-default:hover,
+        .btn-default:focus,
+        .btn-default.focus,
+        .btn-default:active,
+        .btn-default.active,
+        .open>.dropdown-toggle.btn-default {
+            border-color: #ededed;
+            color: #222;
+            background-color: #f2f2f2;
+            opacity: 0.7;
+        }
+
+        .btn-default:active,
+        .btn-default.active,
+        .open>.dropdown-toggle.btn-default {
+            background-image: none;
+        }
+
+        .btn-default.disabled,
+        .btn-default[disabled],
+        fieldset[disabled] .btn-default,
+        .btn-default.disabled:hover,
+        .btn-default[disabled]:hover,
+        fieldset[disabled] .btn-default:hover,
+        .btn-default.disabled:focus,
+        .btn-default[disabled]:focus,
+        fieldset[disabled] .btn-default:focus,
+        .btn-default.disabled.focus,
+        .btn-default[disabled].focus,
+        fieldset[disabled] .btn-default.focus,
+        .btn-default.disabled:active,
+        .btn-default[disabled]:active,
+        fieldset[disabled] .btn-default:active,
+        .btn-default.disabled.active,
+        .btn-default[disabled].active,
+        fieldset[disabled] .btn-default.active {
+            border-color: #fff;
+            background-color: #fff;
+            opacity: 0.7;
+        }
+
+        .btn-default .badge {
+            color: #fff;
+            background-color: #222;
+        }
+
+        .btn.btn-primary {
+            background-color: transparent;
+            border: 1px solid #f0f0f0;
+            border-color: #f0f0f0;
+            -webkit-transition: all .35s;
+            -moz-transition: all .35s;
+            transition: all .35s;
+        }
+
+        .btn.btn-primary:hover {
+            opacity: 0.7;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 290px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .btn-xl {
+            padding: 15px 30px;
+            font-size: 20px;
+        }
+
+        ::-moz-selection {
+            text-shadow: none;
+            color: #fff;
+            background: #222;
+        }
+
+        ::selection {
+            text-shadow: none;
+            color: #fff;
+            background: #222;
+        }
+
+        img::selection {
+            color: #fff;
+            background: 0 0;
+        }
+
+        img::-moz-selection {
+            color: #fff;
+            background: 0 0;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <br>
+                <img src="../static/logo2.png">
+            </div>
+            <br>
+            <div class="navbar-collapse collapse" id="bs-navbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="page-scroll" href="#one">Demo</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#two">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#three">Try it now</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#four">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#last">Contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme"
+                            href="#aboutModal">TEAM</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+
+    <header id="first">
+        <div class="header-content">
+ 
+            <div class="inner">
+                <br><br>
+                <h1 class="cursive" style="font-size: 15rem;">Survive the never ending Phishing Battles</h1>
+                <br><br><br>
+                <h3 style="text-align: left; margin-left: -38rem;">Machine Learning Powered, Real-Time Phishing and Fraudulent Website Detection.</h4>
+                <hr>
+                <br><br> <br><br>
+                <a href="#one" class="btn btn-primary btn-xl page-scroll" style="text-align: left; margin-left: -160rem; color:rgb(247,220,95); border-color: rgb(247,220,95);">Get Started</a>
+            </div>
+        </div>
+           
+        <video autoplay="" loop="" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s"
+            poster="../static/hook.png" id="video-background">
+        </video>
+    </header>
+    
+    <section class="bg-primary" id="one">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                    <h2 class="margin-top-0 text-primary">Demo Video</h2><br><br>
+                    <iframe width="760" style="margin-left: -8rem;"
+                    border-style="none" height="515" src="https://www.youtube.com/embed/-Da8Mf5vg7o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <!-- <video autoplay="" loop="" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s"
+            poster="sample-video.mp4" id="video-background">
+            <source src="sample-video.mp4" type="video/mp4">
+        </video> -->
+          <!-- <a href="#video-background" id="toggleVideo" data-toggle="collapse"
+                    class="btn btn-primary btn-xl">Toggle Video</a>  -->
+
+                    <!-- <a href="#three" class="btn btn-default btn-xl page-scroll">Learn More</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="two" class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="margin-top-0 text-primary">About</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                    <p class="text-faded"> 
+                        Phishing is a cybercrime in which a target or targets are contacted by email, telephone or text message by someone posing as a 
+                        legitimate institution to lure individuals into providing sensitive data such as personally identifiable information, banking and 
+                        credit card details, and passwords. The information is then used to access important accounts and can result in identity theft and 
+                        financial loss.
+                        <br><br>
+                        "Fish ThE Phish" is an onine security tool that can quickly detect malicious websites and never-before-seen scams when you enter the site's URL and inform you not to enter your credentials. 
+
+                    </p>
+
+                <center><img src="../static/pp.png" alt="centered image" style="text-align: left; margin-left: -25rem; height:30rem; width: 110rem;"></center>
+                </div>
+                <!-- <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-android-laptop wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Responsive</h3>
+                        <p class="text-muted">Your site looks good everywhere</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
+                        <h3>Customizable</h3>
+                        <p class="text-muted">Easy to theme and customize with SASS</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-ios-star-outline wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Consistent</h3>
+                        <p class="text-muted">A mature, well-tested, stable codebase</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- <section id="three" class="no-padding"> -->
+        <section id="three" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="margin-top-0 text-primary">Try It Now</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 text-center">
+            <form class="contact-form row" action="/predict" method="post">
+                <div class="col-md-12">
+                    <label></label>
+                    <input type="text" class="form-control" style="background-color: white; height: 50px;  border-radius: 25px;
+                    border: 2px solid black;font-size: medium;" placeholder="Paste the URL" name="url">
+                </div>
+                <br<br><br>   <br<br><br>   <br<br><br>   <br<br><br>   <br<br><br>   <br<br><br>   <br<br><br>
+               
+              <button type="submit"  class="btn btn-primary btn-xl page-scroll" style="text-align: left; color:black;  border: 2px solid black;">Scan</button>
+              <br><br> 
+              <h2 class="text-primary"> {{ url }}</h2>
+              <br><br> 
+              <h2 class="text-dark" ftestyle="text-align: center;"> {{ pred_text }}</p>
+            </form>
+            <br><br> 
+        </div>
+    </section>
+    <section class="container-fluid" id="four">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <h2 class="text-center text-primary">Features</h2>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Personal Use</h3>
+                    <div class="media-body media-middle">
+                        <p>Protect yourself and your family against malicious websites with our online security browser tool for free.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Business Use</h3>
+                    <div class="media-body media-middle">                      
+                            <p>With our platform, protecting your staff, data, brand, and your customers from malicious websites has never been easier.With our platform, protecting your staff, data, brand, and your customers from malicious websites has never been easier.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Trustworthy</h3>
+                    <div class="media-body media-middle">
+                        <p>Ensures 100% security and privacy.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeIn">
+                    <h3>Zero-Day protection starts with URL detection</h3>
+                    <div class="media-body media-middle">
+                        <p>We provide zero-day detection on phishing and malicious counterfeit websites targeting brands. 
+                    We detect such websites in seconds with high precision, not days or weeks like other blocklist-based phishing protection software solutions.</p>
+                    </div>
+                </div>
+                <hr>
+               
+            </div>
+        </div>
+    </section>
+    <!-- <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2 class="text-primary">Get Started</h2>
+                <a href="http://www.bootstrapzero.com/bootstrap-template/landing-zero" target="ext"
+                    class="btn btn-default btn-lg wow flipInX">Free Download</a>
+            </div>
+            <br>
+            <hr />
+            <br>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                        <h6 class="wide-space text-center">BOOTSTRAP IS BASED ON THESE STANDARDS</h6>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-html5-outline" title="html 5"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-sass" title="sass"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-javascript-outline" title="javascript"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-css3-outline" title="css 3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside> -->
+    <section id="last" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="text-primary">Get in Touch</h2>
+                    <hr class="primary">
+                    <p class="wide-space text-center" style="color: #222;">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+                </div>
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <form class="contact-form row">
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Phone">
+                        </div>
+                        <div class="col-md-12">
+                            <label></label>
+                            <textarea class="form-control" rows="9" placeholder="Your message here.."></textarea>
+                        </div>
+                        <div class="col-md-4 col-md-offset-4">
+                            <label></label>
+                            <!-- <button type="button" data-toggle="modal" data-target="#alertModal"
+                                class="btn btn-primary btn-block btn-lg">Send <i
+                                    class="ion-android-arrow-forward"></i></button> -->
+                                    <button type="button" onClick=window.location.reload()
+                                    class="btn btn-primary btn-block btn-lg">Send <i
+                                        class="ion-android-arrow-forward"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>By,</h4>
+                    <ul class="list-unstyled">
+                        <li><a><h4>K. Ana Jessica</h4></a></li>
+                        <li><a><h4>A. Beautsmin</h4></a></li>
+                        <li><a><h4>V. Febi</h4></a></li>
+                        <li><a><h4>R. Harini</h4></a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>WEB PHISHING DETECTION</h4>
+                    <!-- <ul class="list-unstyled">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul> -->
+                </div>
+                <div class="col-xs-12 col-sm-3 column">
+                    <h4>PNT2022TMID00037</h4>
+                    <!-- <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" title="No spam, we promise!"
+                                placeholder="Tell us your email">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal"
+                                type="button">Subscribe for updates</button>
+                        </div>
+                    </form> -->
+                </div>
+                <div class="col-xs-12 col-sm-3 text-right">
+                    <h4>©<a>https://github.com/IBM-EPBL/IBM-Project-5530-1658802762</a></h4>
+                    <!-- <ul class="list-inline">
+                        <li><a rel="nofollow" href="" title="Twitter"><i
+                                    class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
+                        <li><a rel="nofollow" href="" title="Facebook"><i
+                                    class="icon-lg ion-social-facebook-outline"></i></a>&nbsp;</li>
+                        <li><a rel="nofollow" href="" title="Dribble"><i
+                                    class="icon-lg ion-social-dribbble-outline"></i></a></li>
+                    </ul> -->
+                </div>
+            </div>
+            <br />
+            <!-- <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">Landing Zero by
+                    BootstrapZero</a> ©2015 Company</span> -->
+        </div>
+    </footer>
+    <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="//placehold.it/1200x700/222?text=..." id="galleryImage" class="img-responsive" />
+                    <p>
+                        <br />
+                        <button class="btn btn-primary btn-lg center-block" data-dismiss="modal"
+                            aria-hidden="true">Close <i class="ion-android-close"></i></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2 class="text-center">Web Phishing Detection</h2>
+                    <h5 class="text-center">
+                        Team ID : PNT2022TMID00037
+                    </h5>
+                    <br>
+                    <p class="text-justify">    
+                        Team Leader : ANA JESSICA
+                        <br>
+                        Team member : FEBI
+                        <br>
+                        Team member : HARINI (24-05-2002)
+                        <br>
+                        Team member : BEAUTSMIN
+                    </p>
+                    <p class="text-center"><a href="https://github.com/IBM-EPBL/IBM-Project-5530-1658802762">SOURCE CODE</a></p>
+                    <br />
+                    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true"> Thanks for visiting :)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2 class="text-center">Nice Job!</h2>
+                    <p class="text-center">You clicked the button, but it doesn't actually go anywhere because this is
+                        only a demo.</p>
+                    <p class="text-center"><a href="https://github.com/IBM-EPBL/IBM-Project-5530-1658802762">Learn more at BootstrapZero</a></p>
+                    <br />
+                    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">OK <i
+                            class="ion-android-close"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--scripts loaded here from cdn for performance -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 60
+            });
+
+            $('#topNav').affix({
+                offset: {
+                    top: 200
+                }
+            });
+
+            new WOW().init();
+
+            $('a.page-scroll').bind('click', function (event) {
+                var $ele = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: ($($ele.attr('href')).offset().top - 60)
+                }, 1450, 'easeInOutExpo');
+                event.preventDefault();
+            });
+
+            $('.navbar-collapse ul li a').click(function () {
+                /* always close responsive nav after click */
+                $('.navbar-toggle:visible').click();
+            });
+
+            $('#galleryModal').on('show.bs.modal', function (e) {
+                $('#galleryImage').attr("src", $(e.relatedTarget).data("src"));
+            });
+
+        })(jQuery);
+    </script>
+</body>
+
+</html>
